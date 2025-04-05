@@ -6,7 +6,7 @@ public partial class CurrentDateTimeControl : ContentView
 
 	public CurrentDateTimeControl()
 	{
-		InitializeComponent();
+		InitializeComponent(); // Initialize the XAML components
 
         _timer = new PeriodicTimer(TimeSpan.FromSeconds(1));
 
