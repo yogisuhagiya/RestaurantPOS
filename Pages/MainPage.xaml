@@ -50,8 +50,9 @@
             </Grid>
 
         </Grid>
-
+        // This is the right side of the grid
         <Grid
+           
             Grid.Column="1"
             Padding="0,10"
             BackgroundColor="{StaticResource LightWeat}"
