@@ -10,6 +10,7 @@
     x:DataType="vm:HomeViewModel"
     Shell.NavBarIsVisible="False">
 
+  
     <Grid ColumnDefinitions=".75*, .25*">
         <Grid
             Grid.Column="0"
