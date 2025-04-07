@@ -11,7 +11,6 @@
     Shell.NavBarIsVisible="False">
 
     <Grid ColumnDefinitions=".75*, .25*">
-
         <Grid
             Grid.Column="0"
             Padding="15"
@@ -50,7 +49,6 @@
             </Grid>
 
         </Grid>
-        // This is the right side of the grid
         <Grid
            
             Grid.Column="1"
@@ -70,7 +68,7 @@
             <Grid
                 Grid.Row="1"
                 Padding="10"
-                BackgroundColor="Purple">
+                BackgroundColor="{StaticResource LightWeat}">
                 <CollectionView ItemsSource="{Binding CartItems}">
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout ItemSpacing="2" Orientation="Vertical" />
@@ -78,7 +76,7 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:CartModel">
                             <Grid>
-                                <Border Padding="5" BackgroundColor="Purple">
+                                <Border Padding="5" BackgroundColor="{StaticResource LightWeat}">
                                     <Border.StrokeShape>
                                         <RoundRectangle CornerRadius="10" />
                                     </Border.StrokeShape>
