@@ -53,6 +53,9 @@ Even though I was working alone, I tried to use Git properly – like using thos
 Overall, Git just made me feel more in control, helped me avoid mistakes, and made the whole process less stressful. I learned a ton, and I know this will be really useful for future projects, especially if I'm working with a team.
 
 
+
+----- Folder Structure ------
+
 /RestaurantPOS 
 │
 ├── Properties
