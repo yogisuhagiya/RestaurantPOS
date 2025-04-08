@@ -5,6 +5,7 @@ namespace RestaurantPOS.Models
 {
     public partial class OrderModel : ObservableObject
     {
+        //  This will be store the data in user Order items.
         public int Id { get; set; }
         public DateTime OrderDate { get; set; }
         public int TotalItemsCount { get; set; }

@@ -4,6 +4,8 @@ namespace RestaurantPOS.Data
 {
     public class OrderItem
     {
+
+        // This will be get and set the order details.
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public int OrderId { get; set; }
