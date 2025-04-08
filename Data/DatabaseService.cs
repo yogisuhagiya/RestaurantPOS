@@ -3,11 +3,15 @@ using SQLite;
 
 namespace RestaurantPOS.Data
 {
+   
     public class DatabaseService : IAsyncDisposable
     {
         private readonly SQLiteAsyncConnection _connection;
 
+       
         public DatabaseService()
+
+           
         {
             var dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\RestaurantPOS.db3");
 
