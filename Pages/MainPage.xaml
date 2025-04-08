@@ -10,6 +10,9 @@
     x:DataType="vm:HomeViewModel"
     Shell.NavBarIsVisible="False">
 
+    <!-- Version from master branch -->
+    <!-- Version from sqlite-integration branch -->
+
     <!---This is a main page of my website show the all details of Menu different Menu categories and Add to cart details.!-->
     <Grid ColumnDefinitions=".75*, .25*">
         <Grid
