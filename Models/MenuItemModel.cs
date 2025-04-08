@@ -5,7 +5,9 @@ namespace RestaurantPOS.Models
 {
     public partial class MenuItemModel : ObservableObject
     {
-
+        /// <summary>
+        /// This will store the data under separate menu items in the menu.
+        /// </summary>
         public int Id { get; set; }
 
         [ObservableProperty]
