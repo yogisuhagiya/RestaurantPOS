@@ -8,7 +8,8 @@ namespace RestaurantPOS.Data
     {
         private readonly SQLiteAsyncConnection _connection;
 
-       
+        // update the database path
+
         public DatabaseService()
            
            // set the sqlite connection
