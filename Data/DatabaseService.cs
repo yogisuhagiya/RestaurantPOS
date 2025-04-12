@@ -33,6 +33,8 @@ namespace RestaurantPOS.Data
             await SeedDataAsync();
         }
 
+        //    connection
+
         private async Task SeedDataAsync()
         {
             var firstCategory = await _connection.Table<MenuCategory>().FirstOrDefaultAsync();
