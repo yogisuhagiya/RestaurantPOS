@@ -207,5 +207,10 @@ namespace RestaurantPOS.Data
                 return errorMessage;
             }
         }
+
+        internal async Task GetConnectionAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

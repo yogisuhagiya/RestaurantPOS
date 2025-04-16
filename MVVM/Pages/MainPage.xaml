@@ -57,7 +57,7 @@
            
             Grid.Column="1"
             Padding="0,10"
-            BackgroundColor="{StaticResource LightWeat}"
+            BackgroundColor="#ADD8E6"
             RowDefinitions="Auto, *, Auto">
             <VerticalStackLayout Grid.Row="0" Spacing="5">
                 <controls:CurrentDateTimeControl />
@@ -72,7 +72,7 @@
             <Grid
                 Grid.Row="1"
                 Padding="10"
-                BackgroundColor="{StaticResource LightWeat}">
+                BackgroundColor="#ADD8E6">
                 <CollectionView ItemsSource="{Binding CartItems}">
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout ItemSpacing="2" Orientation="Vertical" />
@@ -80,7 +80,7 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:CartModel">
                             <Grid>
-                                <Border Padding="5" BackgroundColor="{StaticResource LightWeat}">
+                                <Border Padding="5" BackgroundColor="#E9FFFF">
                                     <Border.StrokeShape>
                                         <RoundRectangle CornerRadius="10" />
                                     </Border.StrokeShape>
@@ -284,11 +284,13 @@
                                 MinimumWidthRequest="25"
                                 Text="Paid Online"
                                 TextColor="White"
-                                ToolTipProperties.Text="Close Order">
-                                <Button.CommandParameter>
+                                ToolTipProperties.Text="Close Order"
+                               Clicked="OnPayClicked" >
+                                <Button.CommandParameter >
                                     <x:Boolean>false</x:Boolean>
+                                   
                                 </Button.CommandParameter>
-                            </Button>
+                                </Button>
                         </Grid>
                     </Grid>
                 </Border>

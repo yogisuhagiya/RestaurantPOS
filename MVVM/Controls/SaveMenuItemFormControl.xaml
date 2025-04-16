@@ -11,7 +11,7 @@
     <ContentView.Resources>
         <ResourceDictionary>
             <Style x:Key="txt" TargetType="Entry">
-                <Setter Property="BackgroundColor" Value="Wheat" />
+                <Setter Property="BackgroundColor" Value="#E9FFFF" />
                 <Setter Property="PlaceholderColor" Value="Black" />
             </Style>
             <Style x:Key="lbl" TargetType="Label">
@@ -36,7 +36,7 @@
             <VerticalStackLayout Spacing="2">
                 <Label Style="{StaticResource lbl}" Text="Image/Icon" />
                 <Border
-                    BackgroundColor="Wheat"
+                    BackgroundColor="#E9FFFF"
                     HeightRequest="100"
                     HorizontalOptions="Center"
                     StrokeThickness="0"
@@ -89,7 +89,7 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:MenuCategoryModel">
                             <Border
-                                BackgroundColor="Wheat"
+                                BackgroundColor="#E9FFFF"
                                 HeightRequest="40"
                                 StrokeShape="RoundRectangle 10">
                                 <Label

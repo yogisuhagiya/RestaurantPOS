@@ -10,5 +10,6 @@ namespace RestaurantPOS.Data
         public int TotalItemsCount { get; set; }
         public decimal TotalAmountPaid { get; set; }
         public string PaymentMode { get; set; } // Cash or Online
+ 
     }
 }

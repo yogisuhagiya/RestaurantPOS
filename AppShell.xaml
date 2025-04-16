@@ -5,10 +5,27 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:RestaurantPOS"
     xmlns:pages="clr-namespace:RestaurantPOS.Pages"
+    xmlns:pagesM="clr-namespace:RestaurantPosMAUI.MVVM.Pages"
     Title="Restaurant POS"
-    Shell.FlyoutBackgroundColor="Wheat"
+    Shell.FlyoutBackgroundColor="#ADD8E6"
+    Shell.ForegroundColor="White"
     Shell.FlyoutBehavior="Locked"
     Shell.FlyoutWidth="60">
+
+    <ShellContent
+    Title="Home"
+    ContentTemplate="{DataTemplate pagesM:SignUpPage}"
+    Icon="home.png"
+    Route="SignUpPage"
+        FlyoutItemIsVisible="False" />
+
+    <ShellContent
+   Title="Home"
+   ContentTemplate="{DataTemplate pagesM:SignInPage}"
+   Icon="home.png"
+   Route="SignInPage" 
+        FlyoutItemIsVisible="False"/>
+
 
     <ShellContent
         Title="Home"

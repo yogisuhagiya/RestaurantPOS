@@ -17,5 +17,7 @@ namespace RestaurantPOS.Data
 
         [Ignore]
         public decimal Amount => Price * Quantity;
+       
+        //public object Item { get; internal set; }
     }
 }

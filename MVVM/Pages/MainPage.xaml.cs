@@ -8,6 +8,13 @@ namespace RestaurantPOS.Pages
         private readonly HomeViewModel _homeViewModel;
         private readonly SettingsViewModel _settingsViewModel;
 
+
+        private async void OnPayClicked(object sender, EventArgs e)
+        {
+            var paymentUrl = "https://buy.stripe.com/test_aEU8A4ccz4kW6xa8ww"; // Replace with your Stripe link
+            await Launcher.OpenAsync(new Uri(paymentUrl));
+        }
+
         public MainPage(HomeViewModel homeViewModel, SettingsViewModel settingsViewModel)
         {
             InitializeComponent();

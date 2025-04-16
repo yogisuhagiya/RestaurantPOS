@@ -197,7 +197,7 @@ namespace RestaurantPOS.ViewModels
             if (await Shell.Current.DisplayAlert("Close Order", "Are you sure you want to close the order?", "Yes", "No"))
             {
                 IsLoading = true;
-                if (await _ordersViewModel.CreateOderAsync([.. CartItems], isPaidCash))
+                if (await _ordersViewModel.CreateOderAsync(CartItems.ToArray(), isPaidCash)) // Fix: Convert CartItems to an array using ToArray()
                 {
                     CartItems.Clear();
                 }
@@ -211,10 +211,9 @@ namespace RestaurantPOS.ViewModels
             var menuItem = MenuItems.FirstOrDefault(m => m.Id == model.Id);
             if (menuItem != null)
             {
-
                 if (!model.SelectedCategories.Any(c => c.Id == SelectedCategory.Id))
                 {
-                    MenuItems = [.. MenuItems.Where(m => m.Id != model.Id)];
+                    MenuItems = MenuItems.Where(m => m.Id != model.Id).ToArray(); // Fix: Use LINQ and convert to array
                     return;
                 }
 
@@ -223,7 +222,7 @@ namespace RestaurantPOS.ViewModels
                 menuItem.Description = model.Description;
                 menuItem.Icon = model.Icon;
 
-                MenuItems = [.. MenuItems];
+                MenuItems = MenuItems.ToArray(); // Fix: Convert to array
             }
             else if (model.SelectedCategories.Any(c => c.Id == SelectedCategory.Id))
             {
@@ -236,21 +235,19 @@ namespace RestaurantPOS.ViewModels
                     Icon = model.Icon
                 };
 
-                MenuItems = [.. MenuItems, newMenuItem];
+                MenuItems = MenuItems.Append(newMenuItem).ToArray(); // Fix: Use Append and convert to array
             }
 
             var cartItem = CartItems.FirstOrDefault(i => i.ItemId == model.Id);
             if (cartItem != null)
             {
-
                 cartItem.Name = model.Name;
                 cartItem.Price = model.Price;
                 cartItem.Icon = model.Icon;
 
                 var itemIndex = CartItems.IndexOf(cartItem);
 
-                CartItems[itemIndex] = cartItem;
-
+                CartItems[itemIndex] = cartItem; // No changes needed here
             }
         }
     }

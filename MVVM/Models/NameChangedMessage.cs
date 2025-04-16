@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.Messaging.Messages;
 
+
 namespace RestaurantPOS.Models
 {
     public class NameChangedMessage : ValueChangedMessage<string>
