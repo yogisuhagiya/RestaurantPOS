@@ -5,6 +5,7 @@ namespace RestaurantPOS.Models
 {
     public partial class MenuCategoryModel : ObservableObject
     {
+        // set all data members to public
         public int Id { get; set; }
         public string Name { get; set; }
         public string Icon { get; set; }
