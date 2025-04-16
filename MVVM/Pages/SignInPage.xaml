@@ -11,7 +11,7 @@
 
     <VerticalStackLayout Padding="20" Spacing="10">
        
-        <Label Text="Welcome to My Restaurant!" FontSize="24" HorizontalOptions="Center" />
+        <Label Text="Welcome to My Restaurants!" FontSize="24" HorizontalOptions="Center" />
         <Label Text="Create an account" FontSize="18" HorizontalOptions="Center" />
         <StackLayout>
             <Frame BorderColor="Gray" CornerRadius="5" Padding="10">

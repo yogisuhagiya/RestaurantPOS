@@ -20,6 +20,7 @@ namespace RestaurantPosMAUI.MVVM.ViewModels
         private readonly FirebaseAuthClient _firebaseAuthClient;
         public SignUpViewModel(FirebaseAuthClient firebaseAuthClient)
         {
+            // Constructor
             _firebaseAuthClient = firebaseAuthClient;
         }
 
