@@ -8,10 +8,11 @@ namespace RestaurantPOS.Data
     {
         private readonly SQLiteAsyncConnection _connection;
 
-       
-        public DatabaseService()
+        // update the database path
 
+        public DatabaseService()
            
+           // set the sqlite connection
         {
             var dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\RestaurantPOS.db3");
 
@@ -19,7 +20,10 @@ namespace RestaurantPOS.Data
         }
 
         public async Task InitializeDatabase()
+
         {
+
+            // connect the all data pages in sqlite connction 
             await _connection.CreateTableAsync<MenuCategory>();
             await _connection.CreateTableAsync<MenuItem>();
             await _connection.CreateTableAsync<MenuItemCategoryMapping>();
@@ -28,6 +32,8 @@ namespace RestaurantPOS.Data
 
             await SeedDataAsync();
         }
+
+        //    connection
 
         private async Task SeedDataAsync()
         {
@@ -48,6 +54,7 @@ namespace RestaurantPOS.Data
         }
 
         public async ValueTask DisposeAsync()
+            
         {
             if (_connection != null)
             {
@@ -59,6 +66,7 @@ namespace RestaurantPOS.Data
 
         public async Task<MenuItem[]> GetMenuItemsByCategoryIdAsync(int categoryId)
         {
+            // get the menu items by category 
             var query = @"
                             SELECT mi.*
                             FROM MenuItem AS mi
@@ -115,6 +123,7 @@ namespace RestaurantPOS.Data
 
         public async Task<MenuCategory[]> GetCategoriesByMenuItemIdAsync(int menuItemId)
         {
+            //  join the menu itmes category mapping
             var query = @"
                         SELECT cat.* 
                         FROM MenuCategory cat

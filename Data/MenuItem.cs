@@ -3,6 +3,9 @@
 namespace RestaurantPOS.Data
 {
     public class MenuItem
+
+    // This will be fetch the menu Items in Sqlite database.
+
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }

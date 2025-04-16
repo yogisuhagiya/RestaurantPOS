@@ -2,6 +2,7 @@
 
 namespace RestaurantPOS.Data
 {
+    // This will be fetch the menu Category in Sqlite database.
     public class MenuCategory
     {
         [PrimaryKey, AutoIncrement]
