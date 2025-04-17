@@ -22,6 +22,8 @@ namespace RestaurantPosMAUI.MVVM.ViewModels
         [ObservableProperty]
         private SignInModel _signInModel = new SignInModel();
 
+        // Observable property to display any error message that occurs during sign-in
+
 
         [ObservableProperty]
         private string _errorMessage;
@@ -37,8 +39,12 @@ namespace RestaurantPosMAUI.MVVM.ViewModels
             try
             {
                 var result = await _firebaseAuthClient.SignInWithEmailAndPasswordAsync(_signInModel.Email, _signInModel.Password);
+                // Check if the sign-in was successful by verifying the user's email
+
                 if (!string.IsNullOrWhiteSpace(result?.User?.Info?.Email))
                 {
+                    // Navigate to the main page upon successful sign-in
+
                     await Shell.Current.GoToAsync($"{nameof(MainPage)}", true);
                 }
             }
@@ -51,6 +57,8 @@ namespace RestaurantPosMAUI.MVVM.ViewModels
         [RelayCommand]
         private async Task NavigateSignUp()
         {
+            // Navigate to the sign-up page (or any other page as required)
+
             await Shell.Current.GoToAsync($"{nameof(MainPage)}");
         }
 

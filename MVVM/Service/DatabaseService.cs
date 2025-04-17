@@ -3,12 +3,14 @@ using SQLite;
 
 namespace RestaurantPOS.Data
 {
-   
+    // DatabaseService handles interactions with the SQLite database for the Restaurant POS system.
+
     public class DatabaseService : IAsyncDisposable
     {
         private readonly SQLiteAsyncConnection _connection;
 
-       
+        // Constructor for DatabaseService which initializes the SQLite connection to the local database.
+
         public DatabaseService()
            
            // set the sqlite connection
@@ -18,11 +20,14 @@ namespace RestaurantPOS.Data
             _connection = new SQLiteAsyncConnection(dbPath, SQLiteOpenFlags.Create | SQLiteOpenFlags.ReadWrite | SQLiteOpenFlags.SharedCache);
         }
 
+
+        // Initializes the database by creating required tables and inserting seed data if the database is empty.
+
         public async Task InitializeDatabase()
 
         {
 
-            // connect the all data pages in sqlite connction 
+            // Creating tables for different models in the SQLite database
             await _connection.CreateTableAsync<MenuCategory>();
             await _connection.CreateTableAsync<MenuItem>();
             await _connection.CreateTableAsync<MenuItemCategoryMapping>();
@@ -30,7 +35,11 @@ namespace RestaurantPOS.Data
             await _connection.CreateTableAsync<OrderItem>();
 
             await SeedDataAsync();
+            // Seeds data if the database is empty
+
         }
+
+        // Seed initial data into the tables if the database is empty.
 
         private async Task SeedDataAsync()
         {
@@ -41,9 +50,15 @@ namespace RestaurantPOS.Data
                 return; // DB has been seeded
             }
 
+
+            // Retrieve seed data for categories, menu items, and mappings.
+
             var categories = SeedData.GetMenuCategories();
             var menuItems = SeedData.GetMenuItems();
             var mappings = SeedData.GetMenuItemCategoryMappings();
+
+
+            // Insert seed data into respective tables.
 
             await _connection.InsertAllAsync(categories);
             await _connection.InsertAllAsync(menuItems);
@@ -58,6 +73,10 @@ namespace RestaurantPOS.Data
                 await _connection.CloseAsync();
             }
         }
+
+
+        // Retrieves all menu categories from the database asynchronously.
+
 
         public async Task<MenuCategory[]> GetMenuCategoriesAsync() => await _connection.Table<MenuCategory>().ToArrayAsync();
 
@@ -106,10 +125,17 @@ namespace RestaurantPOS.Data
             else
             {
                 return "Error inserting order";
+                // Return error if the order itself couldn't be inserted.
+
             }
             model.Id = newOrder.Id;
+
+            // Assign the newly created order ID to the model.
+
             return null;
         }
+
+        // Retrieves order items associated with a specific order ID.
 
         public async Task<Order[]> GetOrdersAsync() => await _connection.Table<Order>().OrderByDescending(o => o.OrderDate).ToArrayAsync();
 
@@ -130,12 +156,19 @@ namespace RestaurantPOS.Data
                     ";
             var categories = await _connection.QueryAsync<MenuCategory>(query, menuItemId);
             return [.. categories];
+
+            // Return categories associated with the specified menu item.
+
         }
+
+        // Saves a menu item into the database (either inserting a new item or updating an existing one).
 
         public async Task<string?> SaveMenuItemAsync(MenuItemModel model)
         {
             if (model.Id == 0)
             {
+                // Inserting a new menu item if the model has no ID.
+
                 MenuItem menuItem = new()
                 {
                     Id = model.Id,
@@ -158,10 +191,15 @@ namespace RestaurantPOS.Data
                     {
                         model.Id = menuItem.Id;
                         return null;
+                        // Return null if the menu item was saved successfully.
+
                     }
                     else
                     {
                         await _connection.DeleteAsync(menuItem);
+
+                        // Rollback insertion if category mapping failed.
+
                     }
                 }
                 return "Error saving menu item";
@@ -183,6 +221,8 @@ namespace RestaurantPOS.Data
                     {
                         errorMessage = "Error updating menu item";
                         throw new Exception();
+                        // Throw exception if update fails.
+
                     }
 
                     var deleteQuery = @"
@@ -201,12 +241,16 @@ namespace RestaurantPOS.Data
                     {
                         errorMessage = "Error updating menu item categories";
                         throw new Exception();
+                        // Throw exception if category mapping update fails.
+
                     }
                 });
 
                 return errorMessage;
             }
         }
+
+        // Placeholder method for getting a database connection asynchronously (currently not implemented).
 
         internal async Task GetConnectionAsync()
         {

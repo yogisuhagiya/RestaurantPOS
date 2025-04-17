@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
+
+<!-- 
+  HelpPopup.xaml: A reusable popup control that displays developer support information.
+  It provides a way for users to get help by email or visit a website.
+-->
 <toolkit:Popup
     x:Class="RestaurantPOS.Controls.HelpPopup"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -8,6 +13,7 @@
     x:Name="this"
     CanBeDismissedByTappingOutsideOfPopup="False"
     Color="Transparent">
+    <!-- Popup container with rounded corners and drop shadow -->
 
     <Border
         BackgroundColor="Wheat"
@@ -17,6 +23,8 @@
             <Shadow Brush="Maroon" Radius="15" />
         </Border.Shadow>
 
+        <!-- Header bar with "Need help?" label and close (X) button -->
+
         <VerticalStackLayout>
 
             <!--  Need help header bar  -->
@@ -24,11 +32,16 @@
                 Padding="15,8"
                 BackgroundColor="Maroon"
                 ColumnDefinitions="*, Auto">
+                
+                <!-- Help title -->
+
                 <Label
                     Grid.Column="0"
                     FontSize="18"
                     Text="Need help?"
                     TextColor="White" />
+
+                <!-- Close popup button -->
                 <Label
                     Grid.Column="1"
                     BackgroundColor="Red"
@@ -46,28 +59,33 @@
                 </Label>
             </Grid>
 
+            <!-- Body section with contact info -->
 
             <VerticalStackLayout Padding="15" Spacing="10">
-                <!--  Envelope icon header  -->
+                <!-- Envelope icon (visual cue for email/contact) -->
                 <Image
                     HeightRequest="25"
                     HorizontalOptions="Center"
                     Source="envelope.png"
                     WidthRequest="25" />
-                <!--  Title  -->
+                
+                <!-- Message encouraging user to connect -->
+
                 <Label
                     FontSize="16"
                     HorizontalOptions="Center"
                     Text="You can connect with me!"
                     TextColor="Black" />
 
-                <!--  Email address  -->
+                <!-- Email address row with copy and tap-to-send features -->
                 <HorizontalStackLayout Spacing="5">
                     <Label
                         FontSize="16"
                         Text="Email me at "
                         TextColor="Black"
                         VerticalOptions="Center" />
+                    
+                    <!-- Static "Email me at" label -->
                     <Label
                         FontAttributes="Bold"
                         FontSize="16"
@@ -80,6 +98,9 @@
                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                         </Label.GestureRecognizers>
                     </Label>
+
+                    <!-- Copy icon to copy email to clipboard -->
+
                     <Image
                         x:Name="CopyEmailImage"
                         HeightRequest="20"
@@ -94,12 +115,16 @@
                 </HorizontalStackLayout>
             </VerticalStackLayout>
 
-            <!--  Footer  -->
+            <!-- Footer with developer credit -->
+
             <Grid
                 Padding="15,5"
                 BackgroundColor="Maroon"
                 ColumnDefinitions="Auto, *"
                 ColumnSpacing="5">
+                
+               
+
                 <Label
                     Grid.Column="0"
                     FontSize="14"
@@ -107,6 +132,8 @@
                     Text="Developed by:"
                     TextColor="White"
                     VerticalOptions="Center" />
+
+                <!-- Developer name with clickable underline -->
                 <Label
                     Grid.Column="1"
                     FontAttributes="Bold"

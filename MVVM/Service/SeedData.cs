@@ -2,10 +2,12 @@
 
 public static class SeedData
 {
+    //      Represents a menu category in the SQLite database.
     public static List<MenuCategory> GetMenuCategories()
     {
         return new List<MenuCategory>
         {
+            //  Represents a menu category in the SQLite database.
             new MenuCategory { Id = 1, Name = "Beverages", Icon = "drink.png" },
             new MenuCategory { Id = 2, Name = "Main Course", Icon = "meal.png" },
             new MenuCategory { Id = 3, Name = "Snacks", Icon = "snacks.png" },
@@ -13,10 +15,12 @@ public static class SeedData
             new MenuCategory { Id = 5, Name = "Fast Food", Icon = "fast_food.png" }
         };
     }
+    //  Represents the mapping between menu items and their respective categories.
     public static List<MenuItem> GetMenuItems()
     {
         return new List<MenuItem>
         {
+            // Represents a menu item in the SQLite database.
             new MenuItem { Id = 1, Name = "Beer", Icon = "beer.png", Description = "Chilled beer", Price = 4.99m },
             new MenuItem { Id = 2, Name = "Biryani", Icon = "biryani.png", Description = "Spicy chicken biryani", Price = 7.99m },
             new MenuItem { Id = 3, Name = "Buns", Icon = "buns.png", Description = "Freshly baked buns", Price = 2.99m },
@@ -77,8 +81,10 @@ public static class SeedData
 
     public static List<MenuItemCategoryMapping> GetMenuItemCategoryMappings()
     {
+        // Represents the mapping between menu items and their respective categories.
         return new List<MenuItemCategoryMapping>
         {
+            // Each mapping associates a menu item with a category.
             new MenuItemCategoryMapping { CategoryId = 1, MenuItemId = 1 },
             new MenuItemCategoryMapping { CategoryId = 1, MenuItemId = 6 },
             new MenuItemCategoryMapping { CategoryId = 1, MenuItemId = 7 },

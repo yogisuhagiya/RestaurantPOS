@@ -15,22 +15,29 @@
 
     <!---This is a main page of my website show the all details of Menu different Menu categories and Add to cart details.!-->
     <Grid ColumnDefinitions=".75*, .25*">
+
+        <!-- Left Side: Menu & Categories -->
         <Grid
             Grid.Column="0"
             Padding="15"
             RowDefinitions="Auto, Auto, *"
             RowSpacing="15">
 
+            <!-- Greeting with user name -->
             <Label
                 Grid.Row="0"
                 FontAttributes="Bold"
                 FontSize="22"
                 Text="{Binding Name, StringFormat='Hello, {0}!'}" />
 
+            <!-- Menu Categories -->
             <controls:CategoriesListControl
                 Grid.Row="1"
                 Categories="{Binding Categories}"
                 OnCategorySelected="OnCategorySelected" />
+
+
+            <!-- Menu Items Grid -->
 
             <Grid Grid.Row="2">
 
@@ -43,6 +50,8 @@
                     VerticalOptions="Fill"
                     Color="{StaticResource LightWeat}" />
 
+                <!-- Loading Indicator -->
+
                 <ActivityIndicator
                     HeightRequest="25"
                     HorizontalOptions="Center"
@@ -53,6 +62,9 @@
             </Grid>
 
         </Grid>
+
+        <!-- Right Side: Order Summary & Checkout -->
+
         <Grid
            
             Grid.Column="1"
@@ -60,6 +72,9 @@
             BackgroundColor="#ADD8E6"
             RowDefinitions="Auto, *, Auto">
             <VerticalStackLayout Grid.Row="0" Spacing="5">
+
+                <!-- Current Date & Title -->
+
                 <controls:CurrentDateTimeControl />
                 <Label
                     FontAttributes="Bold"
@@ -69,6 +84,8 @@
                     TextColor="Black" />
             </VerticalStackLayout>
 
+            <!-- Cart Items Section -->
+
             <Grid
                 Grid.Row="1"
                 Padding="10"
@@ -77,14 +94,22 @@
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout ItemSpacing="2" Orientation="Vertical" />
                     </CollectionView.ItemsLayout>
+
+                    <!-- Cart Item Template -->
+
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:CartModel">
                             <Grid>
+
+                                <!-- Cart Item Display Card -->
+
                                 <Border Padding="5" BackgroundColor="#E9FFFF">
                                     <Border.StrokeShape>
                                         <RoundRectangle CornerRadius="10" />
                                     </Border.StrokeShape>
                                     <Grid ColumnDefinitions="60, *" ColumnSpacing="10">
+
+                                        <!-- Item Icon -->
                                         <Border
                                             Grid.Column="0"
                                             BackgroundColor="LightGray"
@@ -97,6 +122,9 @@
                                                 Source="{Binding Icon}"
                                                 WidthRequest="50" />
                                         </Border>
+
+                                        <!-- Item Details -->
+
                                         <VerticalStackLayout Grid.Column="1" Spacing="5">
                                             <Label
                                                 FontAttributes="Bold"
@@ -104,6 +132,9 @@
                                                 Text="{Binding Name}"
                                                 TextColor="Black" />
                                             <Grid ColumnDefinitions="Auto, *">
+
+                                                <!-- Price & Quantity Controls -->
+
                                                 <Label
                                                     Grid.Column="0"
                                                     FontAttributes="Bold"
@@ -197,6 +228,8 @@
                             HorizontalOptions="Center"
                             Text="{Binding Subtotal, StringFormat='{0:C}'}"
                             TextColor="Black" />
+                        <!-- Tax and Editable Tax Percentage -->
+
                         <HorizontalStackLayout
                             Grid.Row="1"
                             Grid.Column="0"
@@ -224,6 +257,9 @@
                             HorizontalOptions="Center"
                             Text="{Binding TaxAmount, StringFormat='{0:C}'}"
                             TextColor="Black" />
+
+                        <!-- Total -->
+
                         <Border
                             Grid.Row="2"
                             Grid.ColumnSpan="2"
@@ -249,6 +285,9 @@
                             Stroke="Maroon"
                             StrokeDashArray="20,5"
                             StrokeThickness="0.5" />
+
+                        <!-- Order Actions -->
+
                         <Grid
                             Grid.Row="5"
                             Grid.ColumnSpan="2"
@@ -285,7 +324,7 @@
                                 Text="Paid Online"
                                 TextColor="White"
                                 ToolTipProperties.Text="Close Order"
-                               Clicked="OnPayClicked" >
+                               Clicked="OnPayOnlineClicked" >
                                 <Button.CommandParameter >
                                     <x:Boolean>false</x:Boolean>
                                    

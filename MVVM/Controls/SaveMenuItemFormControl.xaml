@@ -9,6 +9,7 @@
     x:Name="this">
 
     <ContentView.Resources>
+        <!-- Defining styles for Entry, Label, and a converter for decimal to string -->
         <ResourceDictionary>
             <Style x:Key="txt" TargetType="Entry">
                 <Setter Property="BackgroundColor" Value="#E9FFFF" />
@@ -18,12 +19,20 @@
                 <Setter Property="FontSize" Value="16" />
                 <Setter Property="TextColor" Value="Black" />
             </Style>
+
+            <!-- Decimal to String Converter -->
+
             <converters:DecimalToStringConverter x:Key="DecimalToStringConverter" />
         </ResourceDictionary>
     </ContentView.Resources>
 
+    <!-- The main scrollable form layout -->
+
     <ScrollView BindingContext="{x:Reference this}">
         <VerticalStackLayout Spacing="10">
+
+            <!-- Name Entry Section -->
+
             <VerticalStackLayout Spacing="2">
                 <Label Style="{StaticResource lbl}" Text="Name" />
                 <Entry
@@ -33,6 +42,9 @@
                     Text="{Binding Item.Name}"
                     TextColor="Black" />
             </VerticalStackLayout>
+
+            <!-- Image/Icon Selection Section -->
+
             <VerticalStackLayout Spacing="2">
                 <Label Style="{StaticResource lbl}" Text="Image/Icon" />
                 <Border
@@ -51,6 +63,9 @@
                         VerticalOptions="Center"
                         WidthRequest="36" />
                 </Border>
+
+                <!-- Button to pick an image -->
+
                 <Button
                     Margin="0,5,0,0"
                     Clicked="PickImageButton_Clicked"
@@ -59,6 +74,9 @@
                     Text="Pick Image"
                     TextColor="White" />
             </VerticalStackLayout>
+            
+            <!-- Description Entry Section -->
+
             <VerticalStackLayout Spacing="2">
                 <Label Style="{StaticResource lbl}" Text="Description" />
                 <Editor
@@ -68,6 +86,9 @@
                     Text="{Binding Item.Description}"
                     TextColor="Black" />
             </VerticalStackLayout>
+            
+            <!-- Price Entry Section -->
+
             <VerticalStackLayout Spacing="2">
                 <Label Style="{StaticResource lbl}" Text="Price" />
                 <Entry
@@ -76,10 +97,14 @@
                     Text="{Binding Item.Price, Converter={StaticResource DecimalToStringConverter}}"
                     TextColor="Black" />
             </VerticalStackLayout>
+
+            <!-- Categories Section (CollectionView to show available categories) -->
+
             <VerticalStackLayout Spacing="2">
                 <Label Style="{StaticResource lbl}" Text="Categories" />
                 <CollectionView ItemsSource="{Binding Item.Categories}">
                     <CollectionView.ItemsLayout>
+
                         <GridItemsLayout
                             HorizontalItemSpacing="3"
                             Orientation="Vertical"
@@ -122,6 +147,9 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
             </VerticalStackLayout>
+            
+            <!-- Buttons for Cancel and Save -->
+
             <Grid ColumnDefinitions="*,*">
                 <Button
                     Grid.Column="0"

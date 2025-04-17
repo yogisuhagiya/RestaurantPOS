@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
+
+<!-- Main ContentPage for the Orders Page in Restaurant POS system -->
+
 <ContentPage
     x:Class="RestaurantPOS.Pages.OrdersPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -10,14 +13,22 @@
     x:DataType="vm:OrdersViewModel"
     Shell.NavBarIsVisible="False">
 
+    <!-- Resources for styling table headers (th) and table data (td) -->
+
     <ContentPage.Resources>
         <ResourceDictionary>
+
+            <!-- Style for table headers -->
+
             <Style x:Key="th" TargetType="Label">
                 <Setter Property="FontSize" Value="14" />
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="TextColor" Value="White" />
             </Style>
+
+            <!-- Style for table data -->
+
             <Style x:Key="td" TargetType="Label">
                 <Setter Property="FontSize" Value="14" />
                 <Setter Property="VerticalOptions" Value="Center" />
@@ -25,12 +36,21 @@
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
+    
+    <!-- Grid Layout for the page with two columns -->
+
+
     <Grid ColumnDefinitions=".75*, .25*">
+
+        <!-- Left Column: Orders list and details -->
+
         <Grid
             Grid.Column="0"
             Padding="15"
             RowDefinitions="Auto, *"
             RowSpacing="15">
+
+            <!-- Orders Page Title -->
 
             <Label
                 Grid.Row="0"
@@ -38,9 +58,15 @@
                 FontSize="22"
                 Text="Orders" />
 
+            <!-- Orders List Grid -->
+
             <Grid Grid.Row="1">
                 <Grid RowDefinitions="30, *">
+
+                    <!-- Table Header for Order List -->
+
                     <Grid BackgroundColor="Maroon" ColumnDefinitions="90, *, *, *, *,*, *">
+                        
                         <Label
                             Grid.Column="0"
                             Padding="5,0,0,0"
@@ -63,12 +89,18 @@
                             Style="{StaticResource th}"
                             Text="No. of Items" />
                     </Grid>
+
+                    <!-- CollectionView for displaying orders -->
+
                     <CollectionView Grid.Row="1"  ItemsSource="{Binding Orders}">
                         <CollectionView.ItemsLayout>
                             <LinearItemsLayout Orientation="Vertical" />
                         </CollectionView.ItemsLayout>
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="models:OrderModel">
+
+                                <!-- Order List Item -->
+
                                 <Grid ColumnDefinitions="90, *, *, *, *,*,*" RowDefinitions="2, Auto, Auto, 2">
                                     <Grid.Triggers>
                                         <DataTrigger
@@ -107,10 +139,16 @@
                                         TextColor="Blue"
                                         TextDecorations="Underline"
                                         ToolTipProperties.Text="Click to view details">
+
+                                        <!-- Button to view details -->
+
                                         <Label.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type vm:OrdersViewModel}}, Path=SelectOrderCommand}" CommandParameter="{Binding .}" />
                                         </Label.GestureRecognizers>
                                     </Label>
+
+                                    <!-- Button to print bill -->
+
                                     <Button
                                         Grid.Row="1"
                                         Grid.Column="5"
@@ -140,8 +178,7 @@
                                      VerticalOptions="Center" />
 
 
-
-
+                                    <!-- Divider between order items -->
 
                                     <BoxView
                                         Grid.Row="3"
@@ -159,6 +196,7 @@
                         </CollectionView.ItemTemplate>
                     </CollectionView>
                 </Grid>
+                <!-- Loading State: Shows overlay when content is being loaded -->
 
                 <BoxView
                     HorizontalOptions="Fill"
@@ -166,6 +204,8 @@
                     Opacity="0.5"
                     VerticalOptions="Fill"
                     Color="{StaticResource LightWeat}" />
+
+                <!-- Activity Indicator for loading state -->
 
                 <ActivityIndicator
                     HeightRequest="25"
@@ -202,6 +242,9 @@
                     ToolTipProperties.Text="Clear Selection"
                     VerticalOptions="Center" />
             </Grid>
+
+            <!-- Right Column: Selected order items -->
+
             <ContentView
                 Grid.Row="1"
                 Padding="10"
@@ -212,12 +255,18 @@
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="data:OrderItem">
+
+                            <!-- Order Item Layout -->
+
                             <Grid>
                                 <Border Padding="5" BackgroundColor="#E9FFFF">
                                     <Border.StrokeShape>
                                         <RoundRectangle CornerRadius="10" />
                                     </Border.StrokeShape>
                                     <Grid ColumnDefinitions="60, *" ColumnSpacing="10">
+
+                                        <!-- Order item icon and details -->
+
                                         <Border
                                             Grid.Column="0"
                                             BackgroundColor="LightGray"

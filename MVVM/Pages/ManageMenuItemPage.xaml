@@ -10,8 +10,11 @@
     x:DataType="vm:ManageMenuItemsViewModel"
     Shell.NavBarIsVisible="False">
 
-
+    <!-- Main Grid layout with two columns, one for the left side (menu items and categories) 
+         and one for the right side (form to save menu items). -->
     <Grid ColumnDefinitions=".75*, .25*">
+
+        <!-- Left side of the page (Categories and Menu Items List) -->
 
         <Grid
             Grid.Column="0"
@@ -19,23 +22,32 @@
             RowDefinitions="Auto, Auto, *"
             RowSpacing="15">
 
+            <!-- Title: Manage Menu Items -->
+
             <Label
                 Grid.Row="0"
                 FontAttributes="Bold"
                 FontSize="22"
                 Text="Manage Menu Items"/>
 
+            <!-- Categories List: This control displays a list of categories that the user can select -->
+
             <controls:CategoriesListControl
                 Grid.Row="1"
                 Categories="{Binding Categories}"
                 OnCategorySelected="OnCategorySelected" />
 
+
+            <!-- Menu Items List: This control displays a list of menu items. The list is in editing mode,
+                 allowing the user to add/edit items. -->
             <Grid Grid.Row="2">
 
                 <controls:MenuItemsListControl
                     IsEditingMode="True"
                     Items="{Binding MenuItems}"
                     OnItemSelected="OnItemSelected" />
+                
+                <!-- Loading Overlay: This BoxView is displayed when IsLoading is true to indicate that content is being loaded -->
 
                 <BoxView
                     HorizontalOptions="Fill"
@@ -43,6 +55,8 @@
                     Opacity="0.5"
                     VerticalOptions="Fill"
                     Color="{StaticResource LightWeat}" />
+
+                <!-- Activity Indicator: Shows when the data is loading -->
 
                 <ActivityIndicator
                     HeightRequest="25"
@@ -55,11 +69,16 @@
 
         </Grid>
 
+        <!-- Right side of the page (Save Menu Item form and current date/time display) -->
+
         <Grid
             Grid.Column="1"
             Padding="0,10"
             BackgroundColor="#ADD8E6"
             RowDefinitions="Auto, *">
+
+            <!-- Top section with current date/time -->
+
             <VerticalStackLayout Grid.Row="0" Spacing="5">
                 <controls:CurrentDateTimeControl />
                 <Label
@@ -70,10 +89,14 @@
                     TextColor="Black" />
             </VerticalStackLayout>
 
+            <!-- Save Menu Item Form: This is where the user can enter new menu items or edit existing ones -->
+
             <Grid
                 Grid.Row="1"
                 Padding="10"
                 BackgroundColor="#ADD8E6">
+                
+                <!-- Custom control for the form used to save the menu item -->
 
                 <controls:SaveMenuItemFormControl
                     Item="{Binding MenuItem}"

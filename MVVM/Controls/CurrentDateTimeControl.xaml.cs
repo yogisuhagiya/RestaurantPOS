@@ -1,15 +1,22 @@
 namespace RestaurantPOS.Controls;
 
+//A custom ContentView that displays the current time and date,
+// updating every second using a PeriodicTimer.
+
 public partial class CurrentDateTimeControl : ContentView
 {
+    //// Timer that ticks every second to update time and date labels
+
     private readonly PeriodicTimer _timer;
 
-    // Constructor
+    
     public CurrentDateTimeControl()
 	{
 		InitializeComponent(); // Initialize the XAML components
 
         _timer = new PeriodicTimer(TimeSpan.FromSeconds(1));
+
+        //// Start continuously updating the labels with the current time/date
 
         UpdateTimeLabelEachSecond();
     }

@@ -1,4 +1,6 @@
 ﻿using RestaurantPOS.ViewModels;
+using RestaurantPosMAUI.MVVM.Service;
+using System.Diagnostics;
 using MenuItem = RestaurantPOS.Data.MenuItem;
 
 namespace RestaurantPOS.Pages
@@ -9,11 +11,28 @@ namespace RestaurantPOS.Pages
         private readonly SettingsViewModel _settingsViewModel;
 
 
-        private async void OnPayClicked(object sender, EventArgs e)
+        private async void OnPayOnlineClicked(object sender, EventArgs e)
         {
-            var paymentUrl = "https://buy.stripe.com/test_aEU8A4ccz4kW6xa8ww"; // Replace with your Stripe link
-            await Launcher.OpenAsync(new Uri(paymentUrl));
+            try
+            {
+                var paymentService = new PaymentService();
+
+                // Get total from ViewModel and convert to cents
+
+                long totalAmountInCents = 2121; // Example: $29.99 — replace this with your actual total
+                var checkoutUrl = await paymentService.CreateCheckoutSessionAsync(totalAmountInCents);
+
+                // Open the Stripe checkout page in the device browser
+                await Launcher.Default.OpenAsync(new Uri(checkoutUrl));
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Payment error: {ex.Message}");
+                await DisplayAlert("Error", "Payment could not be initiated.", "OK");
+            }
         }
+
 
         public MainPage(HomeViewModel homeViewModel, SettingsViewModel settingsViewModel)
         {
@@ -25,6 +44,7 @@ namespace RestaurantPOS.Pages
             BindingContext = _homeViewModel;
 
             Initialize();
+
         }
 
         private async void Initialize()

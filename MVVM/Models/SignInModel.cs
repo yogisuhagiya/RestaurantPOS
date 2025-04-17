@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace RestaurantPosMAUI.MVVM.Models
 {
+    // Represents the user credentials required for signing in
     public class SignInModel
     {
-        /// Properties
+        // User's email address used for login
         public string Email { get; set; }
+
+        // User's password used for login
         public string Password { get; set; }
     }
 }

@@ -227,13 +227,13 @@ namespace RestaurantPOS.ViewModels
                     yPosition += 20;
 
                     // Order Item Listings (with fixed width for alignment)
-                    graphics.DrawString("Burger                        2    $5.00  $10.00", fontRegular, XBrushes.Black, 20, yPosition);
+                    graphics.DrawString("Donut                        3    $5.00  $10.00", fontRegular, XBrushes.Black, 20, yPosition);
                     yPosition += 25;
 
-                    graphics.DrawString("Pizza                         1    $8.00  $8.00", fontRegular, XBrushes.Black, 20, yPosition);
+                    graphics.DrawString("Fish                         1    $8.00  $8.00", fontRegular, XBrushes.Black, 20, yPosition);
                     yPosition += 25;
 
-                    graphics.DrawString("Soda                          3    $1.50  $4.50", fontRegular, XBrushes.Black, 20, yPosition);
+                    graphics.DrawString("French Fries                          2    $1.50  $4.50", fontRegular, XBrushes.Black, 20, yPosition);
                     yPosition += 25;
 
                     // Line Separator (after items)

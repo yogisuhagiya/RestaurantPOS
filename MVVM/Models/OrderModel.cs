@@ -5,15 +5,25 @@ using System.Windows.Input;
 
 namespace RestaurantPOS.Models
 {
+    // Represents a customer's order in the restaurant POS system
     public partial class OrderModel : ObservableObject
     {
-        //  This will be store the data in user Order items.
+        // Unique identifier for the order
         public int Id { get; set; }
+
+        // Date and time when the order was placed
         public DateTime OrderDate { get; set; }
+
+        // Total number of items in the order
         public int TotalItemsCount { get; set; }
+
+        // Total amount paid for the order
         public decimal TotalAmountPaid { get; set; }
+
+        // Payment method used for the order (e.g., Cash, Online)
         public string PaymentMode { get; set; } // Cash or Online
 
+        // Array of individual items in the order
         public OrderItem[] Items { get; set; }
 
         //public OrderItem[] Items
@@ -21,12 +31,17 @@ namespace RestaurantPOS.Models
         //    get;
         //    set;
         //} = Array.Empty<OrderItem>();
+
+        // Indicates whether the order is currently selected in the UI
+
         [ObservableProperty]
         private bool _isSelected;
 
+        // Command to trigger bill printing functionality
         [ObservableProperty]
         private ICommand _printBillCommand;
 
+        // Prepare the bill content as a formatted string
         public void PrintBill()
         {
             // Check if the Items array is null or empty
@@ -42,6 +57,8 @@ namespace RestaurantPOS.Models
                               $"Total Amount: {TotalAmountPaid:C}\n" +
                               $"Payment Mode: {PaymentMode}\n" +
                               "Items:\n";
+
+            // Append details of each item in the order
 
             foreach (var item in Items)
             {

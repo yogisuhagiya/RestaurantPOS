@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+    CategoriesListControl.xaml
+    This control displays a horizontally scrollable list of menu categories.
+    Each category shows an icon and name, highlights when selected, and triggers a command on tap.
+-->
 <ContentView
     x:Class="RestaurantPOS.Controls.CategoriesListControl"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -6,28 +11,38 @@
     xmlns:controls="clr-namespace:RestaurantPOS.Controls"
     xmlns:models="clr-namespace:RestaurantPOS.Models"
     x:Name="this">
-
+    <!-- Horizontal CollectionView bound to the Categories collection -->
     <CollectionView BindingContext="{x:Reference this}" ItemsSource="{Binding Categories}">
         <CollectionView.ItemsLayout>
+            <!-- Displays items in a horizontal list with spacing -->
+
             <LinearItemsLayout ItemSpacing="10" Orientation="Horizontal" />
         </CollectionView.ItemsLayout>
         <CollectionView.ItemTemplate>
+            <!-- DataTemplate for rendering each MenuCategoryModel -->
+
             <DataTemplate x:DataType="models:MenuCategoryModel">
                 <Border
                     Padding="20,10"
                     BackgroundColor="{StaticResource LightWeat}"
                     StrokeShape="RoundRectangle 10"
                     StrokeThickness="0">
+
+                    <!-- Horizontal layout for category icon and name -->
+
                     <HorizontalStackLayout Spacing="5">
+                        <!-- Category icon -->
                         <Image
                             HeightRequest="20"
-                            Source="{Binding Icon}"
+                            Source="{Binding Icon}" 
                             VerticalOptions="Center"
                             WidthRequest="20" />
+                        <!-- Category name label -->
                         <Label
                             Text="{Binding Name}"
                             TextColor="Maroon"
                             VerticalOptions="Center">
+                            <!-- Trigger to change text color when selected -->
                             <Label.Triggers>
                                 <DataTrigger
                                     Binding="{Binding IsSelected}"
@@ -38,6 +53,8 @@
                             </Label.Triggers>
                         </Label>
                     </HorizontalStackLayout>
+                    <!-- Trigger to change background color when selected -->
+
                     <Border.Triggers>
                         <DataTrigger
                             Binding="{Binding IsSelected}"

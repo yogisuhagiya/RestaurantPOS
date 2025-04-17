@@ -17,15 +17,7 @@
     ContentTemplate="{DataTemplate pagesM:SignUpPage}"
     Icon="home.png"
     Route="SignUpPage"
-        FlyoutItemIsVisible="False" />
-
-    <ShellContent
-   Title="Home"
-   ContentTemplate="{DataTemplate pagesM:SignInPage}"
-   Icon="home.png"
-   Route="SignInPage" 
-        FlyoutItemIsVisible="False"/>
-
+    FlyoutItemIsVisible="False" />
 
     <ShellContent
         Title="Home"
@@ -45,6 +37,12 @@
         Icon="grid.png"
         Route="ManageMenuItemPage" />
 
+    <ShellContent
+     Title="Sign Out"
+     ContentTemplate="{DataTemplate pagesM:SignInPage}"
+     Icon="logout.png"
+     Route="SignInPage" />
+
     <Shell.FlyoutFooter>
         <Image
             Margin="0,0,0,25"
@@ -58,5 +56,11 @@
                 <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
             </Image.GestureRecognizers>
         </Image>
+        
+        
+
+     
     </Shell.FlyoutFooter>
+
+   
 </Shell>
