@@ -2,8 +2,7 @@
 Online Restaurant Management System (RestaurantPOS System)
 
 ----- Project Overview -----
-The Online Restaurant Management System is a cross-platform mobile application developed using .NET MAUI, XAML, and SQLite. 
-The System is a comprehensive solution designed to streamline the operations of a restaurant, providing an efficient way to manage sales, orders, and customer interactions. The system enables restaurant staff to quickly process orders, handle payments, and track Order, enhancing operational efficiency and improving customer service.
+This cross-platform mobile app is designed to simplify and digitize the daily operations of a restaurant. It enables staff to manage menus, take and track customer orders, process payments (including online payment integration), and generate bills. The app also supports login for staff and managers, real-time order updates, and SQLite database integration for offline functionality.
 
 ---- Objective ----
 The main goal of the Restaurant POS System is to simplify restaurant operations, reduce human error, speed up order processing, and improve overall customer satisfaction. By integrating order management, billing, inventory, and customer interactions into one unified system, the app aims to optimize restaurant workflows, reduce wait times, and increase revenue.
@@ -60,7 +59,7 @@ Overall, Git just made me feel more in control, helped me avoid mistakes, and ma
 │
 ├── Properties
 ├── Controls
-├── Data
+├── Services
 ├── Models
 ├── Pages
 ├── Platforms
