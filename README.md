@@ -1,5 +1,5 @@
 ﻿----- Project Name -----
-Online Restaurant Management System (RestaurantPOS System)
+RestaurantPOS System
 
 ----- Project Overview -----
 This cross-platform mobile app is designed to simplify and digitize the daily operations of a restaurant. It enables staff to manage menus, take and track customer orders, process payments (including online payment integration), and generate bills. The app also supports login for staff and managers, real-time order updates, and SQLite database integration for offline functionality.
@@ -51,25 +51,6 @@ Even though I was working alone, I tried to use Git properly – like using thos
 
 Overall, Git just made me feel more in control, helped me avoid mistakes, and made the whole process less stressful. I learned a ton, and I know this will be really useful for future projects, especially if I'm working with a team.
 
+---- MVVM File Stucture ----
 
-
------ Folder Structure ------
-
-/RestaurantPOS 
-│
-├── Properties
-├── Controls
-├── Services
-├── Models
-├── Pages
-├── Platforms
-├── Resources
-├── ViewModels
-│
-├── .gitattributes
-├── .gitignore
-├── App.xaml
-├── AppShell.xaml
-├── MauiProgram.cs
-├── README.md
 
